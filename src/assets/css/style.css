@@ -32,6 +32,8 @@ header{
 
 .menu{
     display: none;
+    padding: 2px;
+    border: 2px solid var(--theme-dark);
 }
 
 .account{
@@ -112,20 +114,114 @@ button{
     padding: 4rem 8rem;
 }
 
-.cards{
+.about .cards{
     display: flex;
-    justify-content: space-between;
-    width: 100% ;
-    height: 25rem;
-    gap: 2rem;
+    justify-content: center;
+    width: auto;
+    height: auto;
 }
 
 .fw-card{
     width: 100%;
     height: 100%;
     background-color: var(--theme-secondary);
-    box-shadow: 0px 0px 5px var(--theme-black);
+    box-shadow: 0px 0px 5px var(--theme-secondary);
     border-radius: 25px;
+    padding: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--theme-primary);
+    border-radius: 50%;
+}
+
+.feature{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    background-color: var(--theme-dark);
+    padding: 4rem 8rem;
+}
+
+.feature .h1{
+    max-width: 35rem;
+    color: var(--theme-primary);
+}
+
+.feature .h3{
+    max-width: 100%;
+    margin: 0;
+}
+
+.feature .color{
+    max-width: 35rem;
+    color: var(--theme-ligth);
+}
+
+.feature .cards{
+    width: 100%;
+    height: auto;
+}
+
+.user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 8rem;
+    background-color: var(--theme-primary);
+}
+
+.user .cards{
+    width: auto;
+    height: auto;
+}
+
+.user .fw-card img{
+    max-width: 5rem;
+    max-height: 5rem;
+}
+
+footer{
+    background-color: var(--theme-dark);
+    padding: 4rem 8rem;
+}
+
+footer .logo{
+    color: var(--theme-primary);
+}
+
+footer .line{
+    background-color: var(--theme-ligth);
+    height: 1px;
+    margin: 2rem 0;
+    width: 100%;
+}
+
+footer .sign{
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .contact{
+    display: flex;
+    gap: 2rem;
+}
+
+footer .h3{
+    color: var(--theme-ligth);
+    max-width: 18rem;
 }
 
 @media (max-width: 1199.98px) {
@@ -137,6 +233,10 @@ button{
     }
     .phone{
         display: none;
+    }
+
+    footer .sign{
+        flex-direction: column;
     }
 }
 
@@ -157,5 +257,10 @@ button{
         flex-direction: column;
         justify-content: center;
         height: 85vh;
+    }
+    footer .contact{
+        display: flex;
+        flex-direction: column;
+        gap: 0;
     }
 }
