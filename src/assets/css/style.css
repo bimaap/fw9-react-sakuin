@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;600;700;800&display=swap');
+
+:root{
+    --theme-primary: #F0EBE3;
+    --theme-secondary: #E4DCCF;
+    --theme-ligth: #7D9D9C;
+    --theme-dark: #576F72;
+    --theme-black: #3A3D42;
+    --theme-white: #fff;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8rem;
+    height: 8rem;
+    background-color: var(--theme-primary);
+}
+
+.logo{
+    font-family: 'Nunito Sans';
+    font-weight: 800;
+    color: var(--theme-dark);
+    font-size: 2.6rem;
+}
+
+.menu{
+    display: none;
+}
+
+.account{
+    display: flex;
+    gap: 1.5rem;
+}
+
+button{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    background-color: var(--theme-dark);
+    color: var(--theme-primary);
+    padding: 0.7rem 3rem;
+    border-radius: 1rem;
+    outline: unset;
+    border: unset;
+    font-size: 1.2em;
+    width: fit-content;
+}
+
+.login{
+    background-color: var(--theme-primary);
+    color: var(--theme-dark);
+    border: 2px solid var(--theme-dark);
+}
+
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15rem;
+    padding: 0 8rem;
+    background-color: var(--theme-primary);
+}
+
+.h1{
+    font-family: 'Nunito Sans';
+    font-weight: 800;
+    font-size: 60px;
+    color: var(--theme-black);
+    max-width: 30rem;
+}
+
+.h2{
+    font-family: 'Nunito Sans';
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--theme-black);
+    max-width: 30rem;
+}
+
+.h3{
+    font-family: 'Nunito Sans';
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--theme-black);
+    max-width: 30rem;
+}
+
+.color{
+    color: var(--theme-dark);
+}
+
+.partner{
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    padding: 0 8rem;
+    background-color: var(--theme-dark);
+}
+
+@media (max-width: 1199.98px) {
+    .main{
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .menu{
+        display: block;
+        width: 30px;
+        height: 30px;
+    }
+    .account{
+        display: none;
+    }
+    .phone{
+        display: none;
+    }
+    .main .content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 85vh;
+    }
+}
