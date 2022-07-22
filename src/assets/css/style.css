@@ -14,6 +14,19 @@
     --theme-white: #fff;
 }
 
+.c-primary{color: var(--theme-primary) !important;}
+.c-secondary{color: var(--theme-secondary) !important;}
+.c-ligth{color: var(--theme-ligth) !important;}
+.c-dark{color: var(--theme-dark) !important;}
+.c-black{color: var(--theme-black) !important;}
+.c-white{color: var(--theme-white) !important;}
+.bc-primary{background-color: var(--theme-primary) !important;}
+.bc-secondary{background-color: var(--theme-secondary) !important;}
+.bc-ligth{background-color: var(--theme-ligth) !important;}
+.bc-dark{background-color: var(--theme-dark) !important;}
+.bc-black{background-color: var(--theme-black) !important;}
+.bc-white{background-color: var(--theme-white) !important;}
+
 header{
     display: flex;
     align-items: center;
@@ -60,6 +73,18 @@ button{
     border: 2px solid var(--theme-dark);
 }
 
+.mp{
+    padding: 5rem 8rem;
+}
+
+.form-control:focus{
+    box-shadow: unset;
+}
+
+.fw-input{
+    border-bottom: 1px solid var(--theme-dark);
+}
+
 .main{
     display: flex;
     align-items: center;
@@ -75,6 +100,7 @@ button{
     font-size: 60px;
     color: var(--theme-black);
     max-width: 50rem;
+    line-height: 90px;
 }
 
 .h2{
@@ -83,14 +109,16 @@ button{
     font-size: 18px;
     color: var(--theme-black);
     max-width: 30rem;
+    line-height: 33px;
 }
 
 .h3{
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--theme-black);
     max-width: 30rem;
+    line-height: 25px;
 }
 
 .color{
