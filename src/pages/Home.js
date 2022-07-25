@@ -25,9 +25,9 @@ function Home() {
       <header>
         <Link className='text-decoration-none' to='/'><span className='logo'>sakuin</span></Link>
         <embed className='menu' src={menu}/>
-        <div className='account'>
+        <div className='account-home d-flex gap-2'>
           <Link className='text-decoration-none' to='/login'><button className='login'>Login</button></Link>
-          <button>Sign In</button>
+          <Link className='text-decoration-none' to='/register'><button>Sign In</button></Link>
         </div>
       </header>
 
@@ -36,7 +36,7 @@ function Home() {
         <div className='content'>
           <h1 className='h1 mb-4'>Awesome App For Saving <span className='color'>Time.</span></h1>
           <h3 className='h3 mb-5'>We bring you a mobile app for banking problems that oftenly wasting much of your times.</h3>
-          <button className=' mb-4'>Try It Free</button>
+          <Link className='text-decoration-none' to='/register'><button className=' mb-4'>Try It Free</button></Link>
           <h3 className='h3'>Available on</h3>
           <div className=''>
             <img src={gplay} alt='gplay'/>
