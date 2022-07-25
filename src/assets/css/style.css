@@ -67,7 +67,7 @@ button{
     width: fit-content;
 }
 
-.login{
+.account{
     background-color: var(--theme-primary);
     color: var(--theme-dark);
     border: 2px solid var(--theme-dark);
@@ -99,7 +99,7 @@ button{
     font-weight: 800;
     font-size: 60px;
     color: var(--theme-black);
-    max-width: 50rem;
+    /* max-width: 50rem; */
     line-height: 90px;
 }
 
@@ -108,7 +108,7 @@ button{
     font-weight: 700;
     font-size: 18px;
     color: var(--theme-black);
-    max-width: 30rem;
+    /* max-width: 30rem; */
     line-height: 33px;
 }
 
@@ -117,7 +117,7 @@ button{
     font-weight: 400;
     font-size: 16px;
     color: var(--theme-black);
-    max-width: 30rem;
+    /* max-width: 30rem; */
     line-height: 25px;
 }
 
@@ -252,6 +252,71 @@ footer .h3{
     max-width: 18rem;
 }
 
+.account{
+    border: unset;
+    gap: 0;
+}
+
+.control-pin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 55px;
+    border-radius: 10px;
+    border: 1px solid rgba(169, 169, 169, 0.6);
+}
+
+.form-pin{
+    width: fit-content;
+    border-bottom: 1px solid rgba(169, 169, 169, 0.6);
+}
+
+.control-pin .pin{
+    width: 30px !important;
+    height: 30px !important;
+    text-align: center;
+    padding: 0;
+}
+
+.profile-picture{
+    width: 55px;
+    height: 55px;
+}
+
+.body-dashboard{
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+.w-fill{
+    width: 100%;
+}
+
+.h-fill{
+    height: 100%;
+}
+
+.control-card{
+    height: 11rem;
+}
+
+.history-transaction{
+    overflow-y: hidden;
+    max-height: 330px;
+}
+
+.oo{
+    -webkit-mask-image: linear-gradient(180deg, #000 85%, transparent);
+}
+
+.receiver{
+    overflow-y: scroll;
+    padding-right: 0.5rem;
+    max-height: 420px;
+}
+
 @media (max-width: 1199.98px) {
     .main .content{
         display: flex;
@@ -266,6 +331,40 @@ footer .h3{
     footer .sign{
         flex-direction: column;
     }
+
+    .intro{
+        width: 100vw;
+        height: fit-content !important;
+        display: flex;
+    }
+
+    .intro .content{
+        height: fit-content !important;
+        position: unset !important;
+        background-color: var(--theme-primary) !important;
+    }
+
+    .intro .logo{
+        color: var(--theme-dark) !important;
+    }
+
+    .intro img, .title, .doc{
+        display: none;
+    }
+
+    .account{
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        border: unset;
+    }
+
+    .form-account{
+        width: 100vw;
+        height: 100% !important;
+        padding: 0 8rem;
+        max-height: 30rem;
+    }
 }
 
 @media (max-width: 767.98px) {
@@ -273,6 +372,9 @@ footer .h3{
         display: block;
         width: 30px;
         height: 30px;
+    }
+    .account-home{
+        display: none !important;
     }
     .account{
         display: none;
@@ -293,5 +395,14 @@ footer .h3{
     }
     .main, .parner, .about, .feature, .user, footer, header{
         padding: 2rem 0.5rem;
+    }
+
+    .form-account{
+        padding: 0 2rem;
+        max-height: 80vh;
+    }
+
+    .intro .content{
+        padding: 2rem 2rem;
     }
 }
