@@ -136,13 +136,13 @@ function Home() {
 
       <footer>
         <Link className='text-decoration-none' to='/'><span className='logo'>sakuin</span></Link>
-        <h3 className='h3 mb-0'>Simplify financial needs and saving much time in banking needs with one single app.</h3>
+        <h3 className='h3 mb-0 c-primary'>Simplify financial needs and saving much time in banking needs with one single app.</h3>
         <div className='line'></div>
         <div className='sign'>
-          <h3 className='h3 mb-0'>2020 sakuin. All right reserved.</h3>
+          <h3 className='h3 mb-0 c-primary'>2020 sakuin. All right reserved.</h3>
           <div className='contact'>
-            <h3 className='h3 mb-0'>+62 5637 8882 9901</h3>
-            <h3 className='h3 mb-0'>contact@sakuin.com</h3>
+            <h3 className='h3 mb-0 c-primary'>+62 5637 8882 9901</h3>
+            <h3 className='h3 mb-0 c-primary'>contact@sakuin.com</h3>
           </div>
         </div>
       </footer>

@@ -5,6 +5,8 @@ import { Container, Form } from 'react-bootstrap'
 import phone from '../assets/images/png-phone6.png'
 import mail from '../assets/icons/mail.svg'
 import lock from '../assets/icons/lock.svg'
+// import {Formik} from 'formik'
+// import * as Yup from 'yup'
 
 function LoginSection(section){
     return (
@@ -26,6 +28,11 @@ function LoginSection(section){
         </>
     )
 }
+
+// const loginSchema = Yup.object().shape({
+//     email: Yup.string().email('Invalid email address format').required('Required'),
+//     password: Yup.string().min(4).required('Required')
+// })
 
 function Login() {
     const [page, setPage] = React.useState('login')
