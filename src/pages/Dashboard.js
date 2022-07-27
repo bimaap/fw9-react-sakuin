@@ -119,7 +119,7 @@ function Dashboard(nav) {
                                 </div>
                                 </Link>
                             </div>
-                            <Link className='text-decoration-none d-flex gap-3 align-items-center' to='/'>
+                            <Link className='text-decoration-none d-flex gap-3 align-items-center' onClick={()=> localStorage.removeItem("auth")} to='/'>
                                 <AiOutlineLogout className='c-dark fs-4' />
                                 <h3 className='navbar-text h3 m-0 c-dark'>Logout</h3>
                             </Link>
