@@ -5,10 +5,18 @@ import {Link, useParams} from 'react-router-dom'
 import { Form } from 'react-bootstrap'
 import { AiOutlineBell, AiOutlineAppstore, AiOutlineArrowUp, AiOutlinePlus, AiOutlineUser, AiOutlineLogout, AiOutlineArrowDown, AiOutlineSearch, AiOutlineEdit, AiOutlineRight, AiOutlineLock, AiOutlineCheck} from "react-icons/ai";
 import user1 from '../assets/images/prof/4.png'
+import { Formik } from 'formik'
+
+import { useSelector, useDispatch } from 'react-redux'
+import { transfer } from "../redux/reducers/transfer";
 
 function Dashboard(nav) {
     const {id} = useParams()
     const [page, setPage] = React.useState({dashboard: 'flex'})
+
+    const dispatch = useDispatch();
+    const amount = useSelector((state) => state.transfer.amount);
+    const notes = useSelector((state) => state.transfer.notes);
 
     const data = {
         results:[
@@ -364,17 +372,35 @@ function Dashboard(nav) {
                                     </div>
                                 </div>
                                 <h3 className='h3 m-0'>Type the amount you want to transfer and then press continue to the next steps.</h3>
-                                <div className='d-flex flex-column h-fill w-fill align-items-center justify-content-center gap-3'>
-                                    <Form.Group className="d-flex align-items-center">
-                                            <Form.Control name="text" type="text" placeholder="0.00" isInvalid={false} className='h1 bg-transparent border-0 text-center'/>
-                                    </Form.Group>
-                                    <h2 className='h2 m-0'>Rp{data.results[id? (id-1):0].amount} Available</h2>
-                                    <Form.Group className="d-flex align-items-center fw-input">
-                                        <Form.Label className='d-flex justify-content-center m-0 col-1'><AiOutlineEdit className='c-dark fs-5' /></Form.Label>
-                                        <Form.Control name="text" type="text" placeholder="Add some notes" isInvalid={false} className='bg-transparent border-0'/>
-                                    </Form.Group>
-                                    <button className='d-flex justify-content-center' onClick={()=> setPage({detailTransaction: 'flex'})}>Continue</button>
-                                </div>
+
+                                <Formik
+                                    initialValues={{amount: '', notes: ''}}>
+                                    {(props)=>
+                                        // <div className='d-flex flex-column gap-5'>
+                                        //     <h2 className='h2 c-black col-8'>Did You Forgot Your Password? Don’t Worry, You Can Reset Your Password In a Minutes.</h2>
+                                        //     <h3 className='h3 c-dark'>To reset your password, you must type your e-mail and we will send a link to your email and you will be directed to the reset password screens.</h3>
+                                        //     <div className="mb-3">
+                                        //         <div className='d-flex align-items-center fw-input'>
+                                        //             <AiOutlineMail className='c-dark fs-4' />
+                                        //             <Form.Control name="emailForgot" onChange={props.handleChange} type="email" placeholder="Enter your e-mail" isInvalid={props.errors.emailForgot? true:false} className='bg-transparent border-0' />
+                                        //         </div>
+                                        //         <h3 className='invaild-feedback' type="invalid">{props.errors.emailForgot}</h3>
+                                        //     </div>
+                                        //     <button className='d-flex justify-content-center col-12' onClick={() => !props.values.emailForgot? false:Object.keys(props.errors).length? false:setPage({resetPassword: 'flex'})}>Confirm</button>
+                                        // </div>
+                                        <div className='d-flex flex-column h-fill w-fill align-items-center justify-content-center gap-3'>
+                                            <Form.Group className="d-flex align-items-center">
+                                                <Form.Control name="amount" onChange={props.handleChange} type="text" placeholder="0.00" isInvalid={false} className='h1 bg-transparent border-0 text-center'/>
+                                            </Form.Group>
+                                            <h2 className='h2 m-0'>Rp{data.results[id? (id-1):0].amount} Available</h2>
+                                            <Form.Group className="d-flex align-items-center fw-input">
+                                                <Form.Label className='d-flex justify-content-center m-0 col-1'><AiOutlineEdit className='c-dark fs-5' /></Form.Label>
+                                                <Form.Control name="notes" onChange={props.handleChange} type="text" placeholder="Add some notes" isInvalid={false} className='bg-transparent border-0'/>
+                                            </Form.Group>
+                                            <button className='d-flex justify-content-center' onClick={()=> {setPage({detailTransaction: 'flex'});  dispatch(transfer({amount: props.values.amount, notes: props.values.notes}))}}>Continue</button>
+                                        </div>
+                                    }
+                                </Formik>
                             </div>
                         </div>
                     </div>
@@ -397,7 +423,7 @@ function Dashboard(nav) {
                                 </div>
                                 <div className='d-flex w-fill flex-column bc-primary p-2 rounded-2'>
                                     <h3 className='h3 m-0'>Amount</h3>
-                                    <h2 className='h2 m-0'>Rp100.000</h2>
+                                    <h2 className='h2 m-0'>Rp{amount}</h2>
                                 </div>
                                 <div className='d-flex w-fill flex-column bc-primary p-2 rounded-2'>
                                     <h3 className='h3 m-0'>Balance Left</h3>
@@ -409,7 +435,7 @@ function Dashboard(nav) {
                                 </div>
                                 <div className='d-flex w-fill flex-column bc-primary p-2 rounded-2'>
                                     <h3 className='h3 m-0'>Notes</h3>
-                                    <h2 className='h2 m-0'>For buying some socks</h2>
+                                    <h2 className='h2 m-0'>{notes}</h2>
                                 </div>
                                 <button className='d-flex justify-content-center' onClick={()=> setPage({transferSuccess: 'flex'})}>Continue</button>
                             </div>
@@ -520,7 +546,7 @@ function Dashboard(nav) {
                                 <h2 className='h2 m-0'>Transfer Success</h2>
                                 <div className='d-flex w-fill flex-column bc-primary p-2 rounded-2'>
                                     <h3 className='h3 m-0'>Amount</h3>
-                                    <h2 className='h2 m-0'>Rp100.000</h2>
+                                    <h2 className='h2 m-0'>Rp{amount}</h2>
                                 </div>
                                 <div className='d-flex w-fill flex-column bc-primary p-2 rounded-2'>
                                     <h3 className='h3 m-0'>Balance Left</h3>
@@ -532,7 +558,7 @@ function Dashboard(nav) {
                                 </div>
                                 <div className='d-flex w-fill flex-column bc-primary p-2 rounded-2'>
                                     <h3 className='h3 m-0'>Notes</h3>
-                                    <h2 className='h2 m-0'>For buying some socks</h2>
+                                    <h2 className='h2 m-0'>{notes}</h2>
                                 </div>
                                 <div className='w-fill'>
                                     <h2 className='h2 m-0'>Transfer to</h2>

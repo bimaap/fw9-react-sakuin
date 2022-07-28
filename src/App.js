@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import Test from './pages/Test'
+import ContentDashboard from './components/ContentDashboard'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>}></Route>
       <Route path='/dashboard/transfer/:id' element={<PrivateRoute><Dashboard /></PrivateRoute>}></Route>
       <Route path='/test' element={<Test />}></Route>
+      <Route path='/content' element={<ContentDashboard />}></Route>
     </Routes>
   )
 }

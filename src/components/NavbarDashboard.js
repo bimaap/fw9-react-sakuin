@@ -5,7 +5,7 @@ import { AiOutlineBell, AiOutlineArrowUp, AiOutlinePlus, AiOutlineUser, AiOutlin
 const HeaderDashboard = () => {
     return(
         <>
-            <div className="saku-navbar-dashboard d-flex flex-column bc-primary justify-content-between">
+            <div className="saku-navbar-dashboard d-flex flex-column bc-primary justify-content-between saku-card">
                 <div className="saku-navbar-main d-flex flex-column gap-5">
                     <div className="d-flex align-items-center gap-2">
                         <AiOutlineBell className="saku-h3 c-dark"/>

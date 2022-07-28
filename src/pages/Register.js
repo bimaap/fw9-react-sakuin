@@ -22,6 +22,15 @@ const pinSchema = Yup.object().shape({
     pin6: Yup.string().required('Required'),
 })
 
+const checkNumber = (event) => {
+    (/[0-9]/.test(event.key))? 
+        setTimeout(() => {
+            let id = Number(event.target.id.split('-')[1])
+            document.getElementById(`pin-${id === 6? 6:id+1}`).focus();
+            document.getElementById(`pin-${id === 6? 6:id+1}`).value = id === 6? event.key:'';
+        }, 100):event.preventDefault()
+}
+
 function Register() {
     const [page, setPage] = React.useState({register: 'flex'})
 
@@ -83,32 +92,32 @@ function Register() {
                                 <div className='d-flex gap-2 justify-content-between'>
                                     <div className='control-pin'>
                                         <Form.Group className="form-pin d-flex align-items-center fw-input">
-                                            <Form.Control name="pin1" onChange={props.handleChange} type="text" isInvalid={false} className='pin bg-transparent border-0'/>
+                                            <Form.Control id='pin-1' name="pin1" maxLength="1" onKeyPress={(event) => checkNumber(event)} onChange={props.handleChange} type="text" isInvalid={false} className='pin bg-transparent border-0'/>
                                         </Form.Group>
                                     </div>
                                     <div className='control-pin'>
                                         <Form.Group className="form-pin d-flex align-items-center fw-input">
-                                            <Form.Control name="pin2" onChange={props.handleChange} type="text" isInvalid={false} className='pin bg-transparent border-0'/>
+                                            <Form.Control id='pin-2' name="pin2" maxLength="1" onKeyPress={(event) => checkNumber(event)} onChange={props.handleChange} type="text" isInvalid={false} className='pin bg-transparent border-0'/>
                                         </Form.Group>
                                     </div>
                                     <div className='control-pin'>
                                         <Form.Group className="form-pin d-flex align-items-center fw-input">
-                                            <Form.Control name="pin3" onChange={props.handleChange} type="text" isInvalid={false} className='pin bg-transparent border-0'/>
+                                            <Form.Control id='pin-3' name="pin3" maxLength="1" onKeyPress={(event) => checkNumber(event)} onChange={props.handleChange} type="text" isInvalid={false} className='pin bg-transparent border-0'/>
                                         </Form.Group>
                                     </div>
                                     <div className='control-pin'>
                                         <Form.Group className="form-pin d-flex align-items-center fw-input">
-                                            <Form.Control name="pin4" onChange={props.handleChange} type="text" isInvalid={false} className='pin bg-transparent border-0'/>
+                                            <Form.Control id='pin-4' name="pin4" maxLength="1" onKeyPress={(event) => checkNumber(event)} onChange={props.handleChange} type="text" isInvalid={false} className='pin bg-transparent border-0'/>
                                         </Form.Group>
                                     </div>
                                     <div className='control-pin'>
                                         <Form.Group className="form-pin d-flex align-items-center fw-input">
-                                            <Form.Control name="pin5" onChange={props.handleChange} type="text" isInvalid={false} className='pin bg-transparent border-0'/>
+                                            <Form.Control id='pin-5' name="pin5" maxLength="1" onKeyPress={(event) => checkNumber(event)} onChange={props.handleChange} type="text" isInvalid={false} className='pin bg-transparent border-0'/>
                                         </Form.Group>
                                     </div>
                                     <div className='control-pin'>
                                         <Form.Group className="form-pin d-flex align-items-center fw-input">
-                                            <Form.Control name="pin6" onChange={props.handleChange} type="text" isInvalid={false} className='pin bg-transparent border-0'/>
+                                            <Form.Control id='pin-6' name="pin6" maxLength="1" onKeyPress={(event) => checkNumber(event)} onChange={props.handleChange} type="text" isInvalid={false} className='pin bg-transparent border-0'/>
                                         </Form.Group>
                                     </div>
                                 </div>

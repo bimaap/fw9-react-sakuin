@@ -347,6 +347,11 @@ footer .h3{
 
 /* SAKU CSS */
 
+.saku-card{
+    padding: 30px;
+    border-radius: 30px;
+}
+
 .saku-header-dashboard{
     position: relative;
     height: 120px;
@@ -397,13 +402,11 @@ footer .h3{
 }
 
 .saku-body-dashboard .saku-body-content{
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .saku-navbar-dashboard{
     width: 300px;
-    padding: 30px;
-    border-radius: 30px;
     height: 100%;
 }
 
@@ -413,6 +416,30 @@ footer .h3{
 
 .saku-footer-dashboard .saku-navbar-dashboard{
     display: none !important;
+}
+
+.saku-content-dashboard{
+    height: 100%;
+    gap: 1rem;
+}
+
+.saku-content-dashboard-top{
+    height: 180px;
+}
+
+.saku-content-dashboard-btm{
+    flex: 1;
+    gap: 1rem;
+}
+
+.saku-content-dashboard-left{
+    flex: 1.2;
+    height: 100%;
+}
+
+.saku-content-dashboard-right{
+    flex: 1;
+    height: 100%;
 }
 
 @media (max-width: 1350px) {
@@ -498,6 +525,12 @@ footer .h3{
 
     .profile-nav{
         width: 100% !important;
+    }
+
+    /* SAKU */
+
+    .saku-navbar-dashboard{
+        width: fit-content;
     }
 }
 
@@ -585,8 +618,7 @@ footer .h3{
     }
 
     .saku-body-dashboard{
-        overflow-y: scroll;
-        padding: 0px 10px;
+        padding: 0 10px;
     }
 
     .saku-footer-dashboard{
@@ -595,5 +627,16 @@ footer .h3{
     .saku-footer-dashboard .saku-navbar-dashboard{
         display: flex !important;
         height: 100% !important;
+        border-radius: 30px 30px 0 0;
+    }
+
+    .saku-content-dashboard{
+        overflow: scroll;
+        height: calc(100vh - 170px);
+    }
+
+    .saku-content-dashboard-btm{
+        display: flex;
+        flex-direction: column;
     }
 }
