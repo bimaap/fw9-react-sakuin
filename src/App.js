@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
+import Test from './pages/Test'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path='/register' element={<Register />}></Route>
       <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>}></Route>
       <Route path='/dashboard/transfer/:id' element={<PrivateRoute><Dashboard /></PrivateRoute>}></Route>
+      <Route path='/test' element={<Test />}></Route>
     </Routes>
   )
 }

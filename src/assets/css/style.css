@@ -345,6 +345,76 @@ footer .h3{
     color: #dc3545;
 }
 
+/* SAKU CSS */
+
+.saku-header-dashboard{
+    position: relative;
+    height: 120px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding: 0 5rem;
+}
+
+.saku-h1{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 45px;
+    font-weight: 800;
+}
+
+.saku-h2{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.saku-h3{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.saku-h4{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.saku-h5{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.saku-notification{
+    position: absolute;
+    right: 260px;
+    top: 100px;
+}
+
+.saku-body-dashboard{
+    flex: 1;
+    padding: 20px 8rem;
+}
+
+.saku-body-dashboard .saku-body-content{
+    overflow-y: scroll;
+}
+
+.saku-navbar-dashboard{
+    width: 300px;
+    padding: 30px;
+    border-radius: 30px;
+    height: 100%;
+}
+
+.saku-footer-dashboard{
+    height: 50px;
+}
+
+.saku-footer-dashboard .saku-navbar-dashboard{
+    display: none !important;
+}
+
 @media (max-width: 1350px) {
     .navbar-dashboard .fw-card{
         align-items: center !important;
@@ -472,5 +542,58 @@ footer .h3{
 
     .body-dashboard{
         padding: 0 1rem;
+    }
+
+    /* SAKU */
+    .saku-header-dashboard{
+        display: flex;
+    }
+
+    .saku-header-left{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .saku-header-right{
+        display: none !important;
+    }
+
+    .saku-navbar-dashboard{
+        width: 100%;
+        height: fit-content !important;
+        padding: 15px 30px !important;
+    }
+
+    .saku-navbar-dashboard .saku-navbar-main{
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .saku-navbar-dashboard .saku-navbar-logout{
+        display: none !important;
+    }
+
+    .saku-navbar-dashboard span{
+        display: none;
+    }
+
+    .saku-body-dashboard .saku-navbar-dashboard{
+        display: none !important;
+    }
+
+    .saku-body-dashboard{
+        overflow-y: scroll;
+        padding: 0px 10px;
+    }
+
+    .saku-footer-dashboard{
+        background-color: transparent !important;
+    }
+    .saku-footer-dashboard .saku-navbar-dashboard{
+        display: flex !important;
+        height: 100% !important;
     }
 }
