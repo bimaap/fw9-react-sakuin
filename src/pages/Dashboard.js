@@ -376,18 +376,6 @@ function Dashboard(nav) {
                                 <Formik
                                     initialValues={{amount: '', notes: ''}}>
                                     {(props)=>
-                                        // <div className='d-flex flex-column gap-5'>
-                                        //     <h2 className='h2 c-black col-8'>Did You Forgot Your Password? Don’t Worry, You Can Reset Your Password In a Minutes.</h2>
-                                        //     <h3 className='h3 c-dark'>To reset your password, you must type your e-mail and we will send a link to your email and you will be directed to the reset password screens.</h3>
-                                        //     <div className="mb-3">
-                                        //         <div className='d-flex align-items-center fw-input'>
-                                        //             <AiOutlineMail className='c-dark fs-4' />
-                                        //             <Form.Control name="emailForgot" onChange={props.handleChange} type="email" placeholder="Enter your e-mail" isInvalid={props.errors.emailForgot? true:false} className='bg-transparent border-0' />
-                                        //         </div>
-                                        //         <h3 className='invaild-feedback' type="invalid">{props.errors.emailForgot}</h3>
-                                        //     </div>
-                                        //     <button className='d-flex justify-content-center col-12' onClick={() => !props.values.emailForgot? false:Object.keys(props.errors).length? false:setPage({resetPassword: 'flex'})}>Confirm</button>
-                                        // </div>
                                         <div className='d-flex flex-column h-fill w-fill align-items-center justify-content-center gap-3'>
                                             <Form.Group className="d-flex align-items-center">
                                                 <Form.Control name="amount" onChange={props.handleChange} type="text" placeholder="0.00" isInvalid={false} className='h1 bg-transparent border-0 text-center'/>

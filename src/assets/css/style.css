@@ -397,12 +397,8 @@ footer .h3{
 }
 
 .saku-body-dashboard{
-    flex: 1;
     padding: 20px 8rem;
-}
-
-.saku-body-dashboard .saku-body-content{
-    overflow-y: auto;
+    height: calc(100vh - 170px);
 }
 
 .saku-navbar-dashboard{
@@ -419,17 +415,26 @@ footer .h3{
 }
 
 .saku-content-dashboard{
-    height: 100%;
+    height: calc(100vh - 210px);
     gap: 1rem;
 }
 
 .saku-content-dashboard-top{
-    height: 180px;
+    height: 200px;
 }
 
 .saku-content-dashboard-btm{
     flex: 1;
     gap: 1rem;
+}
+
+.saku-button-action button{
+    background-color: var(--theme-primary);
+    color: var(--theme-dark);
+    width: 120px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
 }
 
 .saku-content-dashboard-left{
@@ -440,6 +445,17 @@ footer .h3{
 .saku-content-dashboard-right{
     flex: 1;
     height: 100%;
+}
+
+.saku-content-full{
+    overflow-y: auto;
+    height: calc(100vh - 270px);
+}
+
+.modal-content{
+    width: 420px;
+    padding: 20px;
+    border-radius: 30px;
 }
 
 @media (max-width: 1350px) {
@@ -532,6 +548,20 @@ footer .h3{
     .saku-navbar-dashboard{
         width: fit-content;
     }
+
+    .saku-content-dashboard-btm{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .saku-chart{
+        height: 250px;
+    }
+
+    .saku-content-dashboard{
+        overflow-y: scroll !important;
+        height: calc(100vh - 210px);
+    }
 }
 
 @media (max-width: 767.98px) {
@@ -618,7 +648,7 @@ footer .h3{
     }
 
     .saku-body-dashboard{
-        padding: 0 10px;
+        padding: 10px 10px;
     }
 
     .saku-footer-dashboard{
@@ -631,12 +661,34 @@ footer .h3{
     }
 
     .saku-content-dashboard{
-        overflow: scroll;
-        height: calc(100vh - 170px);
+        overflow-y: scroll !important;
+        height: calc(100vh - 190px);
     }
 
     .saku-content-dashboard-btm{
         display: flex;
         flex-direction: column;
+    }
+
+    .saku-content-dashboard-top{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .saku-button-action{
+        display: flex;
+        flex-direction: row !important;
+    }
+
+    .saku-button-action button{
+        padding: 5px;
+        margin-top: 10px;
+        background-color: var(--theme-primary);
+        color: var(--theme-dark);
+    }
+
+    .saku-content-full{
+        height: calc(100vh - 250px);
     }
 }
