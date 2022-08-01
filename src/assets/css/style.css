@@ -458,6 +458,22 @@ footer .h3{
     border-radius: 30px;
 }
 
+.saku-active svg{
+    color: #6379F4 !important;
+}
+
+.saku-active span{
+    color: #6379F4 !important;
+}
+
+.saku-navbar-logout1{
+    display: flex !important;
+}
+
+.saku-navbar-logout2{
+    display: none !important;
+}
+
 @media (max-width: 1350px) {
     .navbar-dashboard .fw-card{
         align-items: center !important;
@@ -496,7 +512,7 @@ footer .h3{
     }
 
     .intro .content{
-        height: fit-content !important;
+        padding: 1rem 8rem;
         position: unset !important;
         background-color: var(--theme-primary) !important;
     }
@@ -518,9 +534,8 @@ footer .h3{
 
     .form-account{
         width: 100vw;
-        height: 100% !important;
+        height: fit-content !important;
         padding: 0 8rem;
-        max-height: 30rem;
     }
 
     .container-body{
@@ -623,9 +638,17 @@ footer .h3{
     }
 
     .saku-navbar-dashboard{
-        width: 100%;
+        width: 100% !important;
         height: fit-content !important;
         padding: 15px 30px !important;
+    }
+
+    .saku-navbar-logout1{
+        display: none !important;
+    }
+
+    .saku-navbar-logout2{
+        display: flex !important;
     }
 
     .saku-navbar-dashboard .saku-navbar-main{

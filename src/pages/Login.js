@@ -1,39 +1,35 @@
 
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Container, Form } from 'react-bootstrap'
 import phone from '../assets/images/png-phone6.png'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { useNavigate } from "react-router-dom";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
+import { login } from "../redux/asyncActions/auth";
+import { useDispatch, useSelector } from "react-redux";
 
 const loginSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email address format').required('Required'),
     password: Yup.string().min(8, 'Password must be at least 8 characters').required('Required')
 })
 
-const validationEmailSchema = Yup.object().shape({
-    emailForgot: Yup.string().email('Invalid email address format').required('Required')
-})
-
-const forgotPasswordSchema = Yup.object().shape({
-    newPassword: Yup.string().min(8, 'New Password must be at least 8 characters').required('Required'),
-    confirmPassword: Yup.string().min(8, 'Confirm Password must be at least 8 characters').required('Required')
-})
-
 function Login() {
-    const [page, setPage] = React.useState({login: 'flex'})
+    const dispatch = useDispatch();
     const navigate = useNavigate()
+    const error = useSelector((state) => state.auth.errorMsg)
+    const token = useSelector((state) => state.auth.token)
 
-    const onLoginRequest = (val) => {
-        if(val.email === 'bima@gmail.com' && val.password === '12341234'){
-            localStorage.setItem("auth", "loginToken");
-            navigate("/dashboard")
-        }else{
-            window.alert('Login Failed')
+    const onLoginRequest = (value) => {
+        const data = { email: value.email, password: value.password };
+        dispatch(login(data));
+    };
+
+    React.useEffect(() => {
+        if (token) {
+          navigate("/dashboard");
         }
-    }
+    }, [navigate, token]);
     
     return(
         <>
@@ -48,84 +44,36 @@ function Login() {
                 </section>
     
                 <section className='form-account d-flex flex-column justify-content-between bc-primary mp'>
-                    <div style={{display: page.login?page.login:'none'}}>
-                        <Formik
-                            initialValues={{email: '', password: ''}}
-                            validationSchema={loginSchema}>
-                            {(props)=>
-                                <div className='d-flex flex-column gap-3'>
-                                    <h2 className='h2 c-black col-8'>Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</h2>
-                                    <h3 className='h3 c-dark'>Transfering money is eassier than ever, you can access Zwallet wherever you are. Desktop, laptop, mobile phone? we cover all of that for you!</h3>
-                                    <div className="mb-3">
-                                        <div className='d-flex align-items-center fw-input'>
-                                            <AiOutlineMail className='c-dark fs-4' />
-                                            <Form.Control name="email" onChange={props.handleChange} type="email" placeholder="Enter your e-mail" isInvalid={props.errors.email? true:false} className='bg-transparent border-0' />
-                                        </div>
-                                        <h3 className='invaild-feedback' type="invalid">{props.errors.email}</h3>
+                    <Formik
+                        initialValues={{email: '', password: ''}}
+                        validationSchema={loginSchema}>
+                        {(props)=>
+                            <div className='d-flex flex-column gap-3'>
+                                <h2 className='h2 c-black col-8'>Start Accessing Banking Needs With All Devices and All Platforms With 30.000+ Users</h2>
+                                <h3 className='h3 c-dark'>Transfering money is eassier than ever, you can access Zwallet wherever you are. Desktop, laptop, mobile phone? we cover all of that for you!</h3>
+                                <div className="mb-3">
+                                    <div className='d-flex align-items-center fw-input'>
+                                        <AiOutlineMail className='c-dark fs-4' />
+                                        <Form.Control name="email" onChange={props.handleChange} type="email" placeholder="Enter your e-mail" isInvalid={props.errors.email? true:false} className='bg-transparent border-0' />
                                     </div>
-                                    <div className="mb-3">
-                                        <div className='d-flex align-items-center fw-input'>
-                                            <AiOutlineLock className='c-dark fs-4' />
-                                            <Form.Control name="password" onChange={props.handleChange} type="password" placeholder="Enter your password" isInvalid={props.errors.password? true:false} className='bg-transparent border-0' />
-                                        </div>
-                                        <h3 className='invaild-feedback' type="invalid">{props.errors.password}</h3>
-                                    </div>
-                                    <h3 className='d-flex justify-content-end h3 c-dark' onClick={()=> setPage({forgotPassword: 'flex'})}>Forgot password?</h3>
-                                    <button className='d-flex justify-content-center col-12' type='button' onClick={() => !(props.values.email && props.values.password)? false:Object.keys(props.errors).length? false:onLoginRequest(props.values)}>Login</button>
-                                    <h3 className='d-flex justify-content-center h3 c-dark'>Don’t have an account? Let’s<Link className='text-decoration-none mx-1' to='/register'>Sign Up</Link></h3>
+                                    <h3 className='invaild-feedback' type="invalid">{props.errors.email}</h3>
                                 </div>
-                            }
-                        </Formik>
-                    </div>
+                                <div className="mb-3">
+                                    <div className='d-flex align-items-center fw-input'>
+                                        <AiOutlineLock className='c-dark fs-4' />
+                                        <Form.Control name="password" onChange={props.handleChange} type="password" placeholder="Enter your password" isInvalid={props.errors.password? true:false} className='bg-transparent border-0' />
+                                    </div>
+                                    <h3 className='invaild-feedback' type="invalid">{props.errors.password}</h3>
+                                </div>
 
-                    <div style={{display: page.forgotPassword?page.forgotPassword:'none'}}>
-                        <Formik
-                            initialValues={{emailForgot: ''}}
-                            validationSchema={validationEmailSchema}>
-                            {(props)=>
-                                <div className='d-flex flex-column gap-5'>
-                                    <h2 className='h2 c-black col-8'>Did You Forgot Your Password? Don’t Worry, You Can Reset Your Password In a Minutes.</h2>
-                                    <h3 className='h3 c-dark'>To reset your password, you must type your e-mail and we will send a link to your email and you will be directed to the reset password screens.</h3>
-                                    <div className="mb-3">
-                                        <div className='d-flex align-items-center fw-input'>
-                                            <AiOutlineMail className='c-dark fs-4' />
-                                            <Form.Control name="emailForgot" onChange={props.handleChange} type="email" placeholder="Enter your e-mail" isInvalid={props.errors.emailForgot? true:false} className='bg-transparent border-0' />
-                                        </div>
-                                        <h3 className='invaild-feedback' type="invalid">{props.errors.emailForgot}</h3>
-                                    </div>
-                                    <button className='d-flex justify-content-center col-12' onClick={() => !props.values.emailForgot? false:Object.keys(props.errors).length? false:setPage({resetPassword: 'flex'})}>Confirm</button>
-                                </div>
-                            }
-                        </Formik>
-                    </div>
+                                <h3 className='invaild-feedback' type="invalid">{error? error:false}</h3>
 
-                    <div style={{display: page.resetPassword?page.resetPassword:'none'}} className='flex-column gap-5'>
-                        <Formik
-                            initialValues={{newPassword: '', confirmPassword: ''}}
-                            validationSchema={forgotPasswordSchema}>
-                            {(props)=>
-                                <div className='d-flex flex-column gap-5'>
-                                    <h2 className='h2 c-black col-8'>Did You Forgot Your Password? Don’t Worry, You Can Reset Your Password In a Minutes.</h2>
-                                    <h3 className='h3 c-dark'>To reset your password, you must type your e-mail and we will send a link to your email and you will be directed to the reset password screens.</h3>
-                                    <div className="mb-3">
-                                        <div className='d-flex align-items-center fw-input'>
-                                            <AiOutlineLock className='c-dark fs-4' />
-                                            <Form.Control name="newPassword" onChange={props.handleChange} type="password" placeholder="New password" isInvalid={props.errors.emailForgot? true:false} className='bg-transparent border-0' />
-                                        </div>
-                                        <h3 className='invaild-feedback' type="invalid">{props.errors.newPassword}</h3>
-                                    </div>
-                                    <div className="mb-3">
-                                        <div className='d-flex align-items-center fw-input'>
-                                            <AiOutlineLock className='c-dark fs-4' />
-                                            <Form.Control name="confirmPassword" onChange={props.handleChange} type="password" placeholder="Confirm password" isInvalid={props.errors.emailForgot? true:false} className='bg-transparent border-0' />
-                                        </div>
-                                        <h3 className='invaild-feedback' type="invalid">{props.errors.confirmPassword}</h3>
-                                    </div>
-                                    <button className='d-flex justify-content-center col-12' onClick={() => !(props.values.newPassword && props.values.confirmPassword)? false:Object.keys(props.errors).length? false:setPage({login: 'flex'})}>Confirm</button>
-                                </div>
-                            }
-                        </Formik>
-                    </div>
+                                <h3 className='d-flex justify-content-end h3 c-dark'>Forgot password?</h3>
+                                <button className='d-flex justify-content-center col-12' type='button' onClick={() => !(props.values.email && props.values.password)? false:Object.keys(props.errors).length? false:onLoginRequest(props.values)}>Login</button>
+                                <h3 className='d-flex justify-content-center h3 c-dark'>Don’t have an account? Let’s<Link className='text-decoration-none mx-1' to='/register'>Sign Up</Link></h3>
+                            </div>
+                        }
+                    </Formik>
                 </section>
             </Container>
         </>
